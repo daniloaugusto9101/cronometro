@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="watch">00:00:00</h1>
+    <button class="btn-start" onclick="start()">Iniciar</button>
+    <button class="btn-pause" onclick="pause()">Pausar</button>
+    <button class="btn-stop" onclick="stop()">Stop</button>
+
+    <script>
+        var sec = 0
+        var min = 0
+        var hr = 0
+        var interval
+
+        function start(){
+            interval = setInterval(escrever,1)
+        }
+        function pause(){
+            clearInterval(interval);
+            // console.log(`Pausou...`)
+        }
+        function stop(){
+            // console.log(`Parou...`)
+            clearInterval(interval);
+            sec = 0
+            min = 0
+            hr = 0
+            document.getElementById(`watch`).innerText = `${hr}:${min}:${sec}`
+        }
+
+        function escrever(){
+            sec++
+            if(sec == 60){
+                sec = 0
+                min++
+                if(min == 60){
+                    min = 0
+                    hr++
+                }
+            }
+            document.getElementById(`watch`).innerText = `${hr}:${min}:${sec}`
+        }
+
+
+    </script>
+
+</body>
+</html>
