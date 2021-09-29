@@ -8,11 +8,30 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-        <h1 id="time">00:00:00:00</h1>
-        <button id="btn-start">Iniciar</button>
-        <button id="btn-pause">Pausar</button>
-        <button id="btn-reset">Reset</button>
+    <div class="container">
+        <div class="contador__container">
+            <div class="contador__dig">
+                <span id="contador-h" class="contador__dig--num">00</span>
+                <span class="contador__legenda">horas(s)</span>
+            </div>
+            <div class="contador__dig">
+                <span id="contador-m" class="contador__dig--num">00</span>
+                <span class="contador__legenda">min.</span>
+            </div>
+            <div class="contador__dig">
+                <span id="contador-s" class="contador__dig--num">00</span>
+                <span class="contador__legenda">seg.</span>
+            </div>
+            <div class="contador__dig">
+                <span id="contador-mls" class="contador__dig--num">00</span>
+                <span class="contador__legenda">mls.</span>
+            </div>     
+        </div>
+        <div class="container-btn">
+            <button id="btn-start" class="btn">Iniciar</button>
+            <button id="btn-pause" class="btn">Pausar</button>
+            <button id="btn-reset" class="btn">Reset</button>
+        </div>
     </div>
     <script src="java2.js"></script>
 </body>
