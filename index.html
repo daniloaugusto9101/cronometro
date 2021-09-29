@@ -9,48 +9,12 @@
 </head>
 <body>
     <div>
-        <h1 id="watch">00:00:00</h1>
-        <button class="star-btn" onclick="start()">Iniciar</button>
-        <button class="pause-btn" onclick="pause()">Pausar</button>
-        <button class="stop-btn" onclick="stop()">Parar</button>
+        <h1 id="time">00:00:00:00</h1>
+        <button id="btn-start">Iniciar</button>
+        <button id="btn-pause">Pausar</button>
+        <button id="btn-reset">Reset</button>
     </div>
-    <script>
-        var sec = 0
-        var min = 0
-        var hr = 0
-        var interval
-
-        function start(){
-            // console.log(`Iniciou...`)
-            interval = setInterval(watch,10)
-        }
-
-        function pause(){
-            // console.log(`Pausou...`)
-            clearInterval(interval)
-        }
-
-        function stop(){
-            // console.log(`Parou...`)
-            clearInterval(interval)
-            sec = 0
-            min = 0
-            document.getElementById(`watch`).innerText = `00:00`
-        }
-
-        function watch(){
-            sec++
-            if(sec == 60){
-                min++
-                sec = 0
-                if(min == 60){
-                    min = 0
-                    hr++
-                }
-            }
-            document.getElementById(`watch`).innerText = `${hr}:${min}:${sec}`
-        }
-    </script>
+    <script src="java2.js"></script>
 </body>
 </html>
     
