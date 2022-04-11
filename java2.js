@@ -1,67 +1,53 @@
-window.onload = () => {
-    h=0; m=0; s=0; mls=0; timeStarted=0;
-    timeH = document.getElementById(`contador-h`);
-    timeM = document.getElementById(`contador-m`);
-    timeS = document.getElementById(`contador-s`);
-    timeMls = document.getElementById(`contador-mls`);
+window.onload = () =>{
 
-    btStart = document.getElementById(`btn-start`);
-    btPause = document.getElementById(`btn-pause`);
-    btReset = document.getElementById(`btn-reset`);
+    let contMls = 0;
+    let contS = 0;
+    let contM = 0;
+    let interval;
+    let mls = document.getElementById("contador-mls");
+    let s = document.getElementById("contador-s");
+    let m = document.getElementById("contador-m");
+    
 
-    iniciar();
-}
+    document.getElementById("btn-start").addEventListener("click", ()=>{
+        interval = setInterval(contar, 10);
+    });
 
-function iniciar(){
-    btStart.addEventListener(`click`,start);
-    btPause.addEventListener(`click`,pause);
-    btReset.addEventListener(`click`,reset);
-}
+    document.getElementById("btn-pause").addEventListener("click", ()=>{
+        clearInterval(interval);
+    });
 
-function write(){
-    let ht, mt, st, mlst;  
+    document.getElementById("btn-reset").addEventListener("click", ()=>{
+        clearInterval(interval);
+        mls.innerHTML = `00`;
+        s.innerHTML = `00`;
+        m.innerHTML = `00`;
+        contMls = 0;
+        contS = 0;
+        contM = 0;
 
-    mls++;
+    });
 
-    if(mls > 60){
-        s++;
-        mls = 0;
+    function contar(){
+        contMls++;
+        if (contMls > 99) {
+            contMls = 0;
+            contS++;
+        }
+        if (contS >= 60) {
+            contS = 0;
+            contM++;
+        }
+        mls.innerHTML = `${doisDigitos(contMls)}`;
+        s.innerHTML = `${doisDigitos(contS)}`;
+        m.innerHTML = `${doisDigitos(contM)}`;
     }
-    if(s > 60){
-        m++;
-        s=0;
+
+    function doisDigitos(d){
+        if (d < 10) {
+            return (`0`+ d)
+        }else{
+            return d
+        }
     }
-    if(m>60){
-        h++;
-        m=0;
-    }
-
-    mlst = (`0${mls}`).slice(-2);
-    st = (`0${s}`).slice(-2);
-    mt = (`0${m}`).slice(-2);
-    ht = (`0${h}`).slice(-2);
-
-    timeH.innerHTML = `${ht}`;
-    timeM.innerHTML = `${mt}`;
-    timeS.innerHTML = `${st}`;
-    timeMls.innerHTML = `${mlst}`;
-}
-
-
-function start(){
-    write();
-    timeStarted = setInterval(write, 10);
-}
-
-function pause(){
-    clearInterval(timeStarted);
-}
-
-function reset(){
-    clearInterval(timeStarted);
-    timeH.innerHTML = `00`;
-    timeM.innerHTML = `00`;
-    timeS.innerHTML = `00`;
-    timeMls.innerHTML = `00`;
-    h=0; m=0; s=0; mls=0;
 }
