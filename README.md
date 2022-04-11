@@ -30,7 +30,7 @@ Cronômetro
 <div>
 
 <a href="https://daniloaugusto9101.github.io/menuHamburguer/" title="Danilo" target="_blank">
-<p>Site demo clique aqui</p>
+<p>Exemplo em funcionamento - clique aqui</p>
 <img src="site.gif" width="800px"></a>
 
 </div>
